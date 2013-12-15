@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+
+    div
+        table
+            thead
+                tr: th Wines
+            tbody
+                each wine, i in wines
+                    tr
+                        td
+                            a(href='/wines/' + wine._id) #{wine.name} - #{wine.year}
