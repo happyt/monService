@@ -8,6 +8,9 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var table = require('./routes/table');
 var wine = require('./routes/wines');
+
+var employee = require('./routes/employees');
+
 var http = require('http');
 var path = require('path');
 
@@ -32,13 +35,19 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+
+// web page
 app.get('/table', table.list);
 
+// web service
 app.get('/wines', wine.findAll);
 app.get('/wines/:id', wine.findById);
 app.post('/wines', wine.addWine);
 app.put('/wines/:id', wine.updateWine);
 app.delete('/wines/:id', wine.deleteWine);
+
+// web pages
+app.get('/employees', employee.findList);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

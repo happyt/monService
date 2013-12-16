@@ -34,6 +34,7 @@ exports.findById = function(req, res) {
     });
 };
 
+// findAll for the JSON web service
 exports.findAll = function(req, res) {
     db.collection('wines', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -42,7 +43,7 @@ exports.findAll = function(req, res) {
     });
 };
 
-
+// findList for the array to put in a list on a page
 exports.findList = function (callback) {
     db.collection('wines', function(err, coll) {
         if(err){
